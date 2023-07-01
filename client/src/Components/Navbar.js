@@ -97,10 +97,7 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <SearchIcon style={{ color: "gray", fontSize: "16px" }} />
-          </SearchContainer>
+          
         </Left>
         <Center>
           <Logo>Welcome back, {user.currentUser && user.currentUser.username}</Logo>

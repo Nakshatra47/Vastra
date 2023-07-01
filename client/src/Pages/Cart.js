@@ -295,7 +295,7 @@ const Cart = () => {
           </Link>
           <TopTexts>
             <TopText>Shopping Bag({cart.quantity})</TopText>
-            <TopText>Your Wishlist (0)</TopText>
+            
           </TopTexts>
           <TopButton type="filled" onClick={handleClick}>
             EMPTY CART

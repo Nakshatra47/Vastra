@@ -57,7 +57,7 @@ const Icon = styled.div`
   justify-content: center;
   background-color: white;
   margin: 10px;
-  transition: all 0.5s ease-in;
+  transition: all 0.3s ease-in;
   &:hover {
     background-color: #e9f5f5;
     transform: scale(1.1);
@@ -71,17 +71,13 @@ function Product(props) {
       <Circle />
       <Image src={props.item.img} />
       <Info>
-        <Icon>
-          <ShoppingCartIcon />
-        </Icon>
+        
         <Icon>
           <Link to={`/product/${props.item._id}`}>
             <SearchIcon />
           </Link>
         </Icon>
-        <Icon>
-          <FavoriteIcon />
-        </Icon>
+        
       </Info>
     </Container>
   );

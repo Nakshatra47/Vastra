@@ -6,7 +6,7 @@ import { login } from "../redux/apiCalls";
 import { useSelector } from "react-redux";
 import loginPage from "../Assests/loginPage.svg";
 import { ToastContainer } from "react-toastify";
-import { notifySuccess,notifyFailure,notifyInfo} from "../Components/alert";
+import { notifyFailure} from "../Components/alert";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -109,7 +109,7 @@ const Login = () => {
       login(dispatch, { username, password });
     }
     else{
-      notifyInfo("Enter Valid Credntails");
+      notifyFailure("Enter Valid Credentials");
     }
 
    
@@ -145,7 +145,7 @@ const Login = () => {
           <Div>
 
           {error && <Error>{error}</Error>}
-          <Link>Do Not YOU REMEMBER THE PASSWORD</Link>
+         
           <Link href="/register">CREATE A NEW ACCOUNT</Link>
           </Div>
         </Form>

@@ -1,15 +1,15 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-
+import { Link, useNavigate } from "react-router-dom";
 import { mobile } from "../Responsive";
 import { userRequest } from "../requestMethod";
 import app from "../firebase.js";
 import { useSelector } from "react-redux";
-import { setNavImage } from "../redux/userRedux";
+//import { setNavImage } from "../redux/userRedux";
 import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
-
-import { notifySuccess, notifyFailure } from "../Components/alert";
+import { logoutUser } from "../redux/userRedux";
+import { notifySuccess, notifyFailure,notifyInfo } from "../Components/alert";
 
 import {
   getStorage,
@@ -129,7 +129,7 @@ const Profile = () => {
 
   const User = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   console.log(User);
 
   const profileHandler = (e) => {
@@ -188,16 +188,18 @@ const Profile = () => {
       }
     };
     updatedProfile();
-  }, [image, User._id, dispatch]);
+  }, [image, User && User._id, dispatch]);
 
   const passwordHandler = async () => {
     console.log(password);
     try {
       const res = await userRequest.put(`users/${User._id}`, password);
       res && notifySuccess("Sucessfully Updated");
+      dispatch(logoutUser());
+      navigate("/login");
     } catch (err) {
       console.log(err);
-      notifySuccess("xx");
+      notifyInfo("Updation Failed");
     }
   };
 
@@ -269,16 +271,16 @@ const Profile = () => {
             <p>{User.createdAt.split("T")[0]}</p>
           </Div>
 
-          <Div>
+          {/* <Div>
             <Button onClick={showPasswordHandler}>Change Password</Button>
-          </Div>
+          </Div> */}
         </Right>
       </Wrapper>
       {showPassword && (
         <Update>
           <Div>
             <Input
-              placeholder="Password"
+              placeholder="New Password"
               type="password"
               name="confirm password"
               onChange={passwordChangeHandler}
@@ -286,14 +288,14 @@ const Profile = () => {
           </Div>
           <Div>
             <Input
-              placeholder="New Password"
+              placeholder="Confirm New Password"
               type="password"
               onChange={passwordChangeHandler}
               name="password"
             ></Input>
           </Div>
           <Div>
-            <Button onClick={passwordHandler}>Update</Button>
+            <Button onClick={passwordHandler} disabled={password!==showPassword}>Update</Button>
           </Div>
         </Update>
       )}

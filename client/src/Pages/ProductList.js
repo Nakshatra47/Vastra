@@ -54,11 +54,7 @@ function ProductList() {
     console.log(filters);
   };
 
-  const handleType = (event) => {
-    settype(event.target.value);
-  };
-
-  console.log(filters);
+ 
 
   return (
     <Container>
@@ -68,16 +64,16 @@ function ProductList() {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="type" onChange={handleType}>
-            <Option disabled>Size</Option>
-            <Option>jeans</Option>
-            <Option>short</Option>
+          <Select defaultValue={"Cateogary"}  name="type" onChange={handleFilters}>
+            <Option disabled={true}>Cateogary</Option>
+            <Option>dress</Option>
+            <Option>cap</Option>
             <Option>coat</Option>
-            <Option>trouser</Option>
+            <Option>t-shirt</Option>
             <Option>shirt</Option>
           </Select>
-          <Select name="color" onChange={handleFilters}>
-            <Option disabled>color</Option>
+          <Select defaultValue={"Color"}  name="color" onChange={handleFilters}>
+            <Option disabled={true}>Color</Option>
             <Option>White</Option>
             <Option>Black</Option>
             <Option>Red</Option>
@@ -85,9 +81,9 @@ function ProductList() {
             <Option>Yellow</Option>
             <Option>Green</Option>
           </Select>
-          <Select name="size" onChange={handleFilters}>
-            <Option disabled>Size</Option>
-            <Option>Xs</Option>
+          <Select name="size" onChange={handleFilters}  defaultValue={"Size"}>
+            <Option  disabled={true}>Size</Option>
+            <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
             <Option>L</Option>

@@ -10,7 +10,7 @@ const router = require("express").Router();
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
-console.log(process.env.KEY_SECRET);
+//console.log(process.env.KEY_SECRET);
 
 // process.env.RAZORPAY_SECRET_KEY
 const instance = new Razorpay({

@@ -1,6 +1,6 @@
 import { loginStart, loginSuccess, loginFailure } from "./userRedux";
 import { publicRequest } from "../requestMethod";
-import { notifyInfo, notifyFailure } from "../Components/alert";
+import {  notifyFailure } from "../Components/alert";
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
@@ -9,13 +9,13 @@ export const login = async (dispatch, user) => {
       user
     );
     dispatch(loginSuccess(res.data));
-    console.log(res);
+    console.log(res); 
    
     console.log(res.data);
   } catch (err) {
     console.log(err);
     dispatch(loginFailure());
-    notifyInfo("Enter Valid Credntails");
-    //notifyFailure(err);
+    
+    notifyFailure("Login Failed");
   }
 };

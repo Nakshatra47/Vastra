@@ -5,6 +5,7 @@ export const sliderItems = [
       title: 'SUMMER SALE',
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: 'f5fafd',
+      cat: 'summer',
     },
     {
       id: 2,
@@ -12,13 +13,15 @@ export const sliderItems = [
       title: 'AUTUMN COLLECTION',
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: 'fcf1ed',
+      cat: 'autumn',
     },
     {
       id: 3,
       img: 'https://the-lama-shop.vercel.app/_next/image?url=%2F3.png&w=1920&q=75',
-      title: 'LOUNGEWEAR LOVE',
+      title: 'WINTER WARDROBE',
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: 'fbf0f4',
+      cat: 'winter',
     },
   ];
 
@@ -28,21 +31,21 @@ export const sliderItems = [
       // img: 'https://github.com/Dhanush-2605/the-lama-shop/blob/main/client/public/6.jpeg?raw=true',
       img:"https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       title: 'SHIRT STYLE!',
-      cat: 'men',
+      cat: 'Man',
     },
     
-    {
+    { 
       id: 2,
       img: 'https://github.com/Dhanush-2605/the-lama-shop/blob/main/client/public/5.jpeg?raw=true',
       title: 'LIGHT JACKETS',
-      cat: 'women',
+      cat: 'Woman',
     },
     {
       id: 3,
       // img: 'https://github.com/Dhanush-2605/the-lama-shop/blob/main/client/public/4.jpeg?raw=true',
       img:"https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=664&q=80",
       title: 'COOL KIDS',
-      cat: 'children',
+      cat: 'Kids',
     }
   ];
 

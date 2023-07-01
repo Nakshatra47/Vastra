@@ -121,17 +121,17 @@ function Register() {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    try {
+    
       let verify=verifyForm(userData);
       if (verify){
-      const res = await userRequest.post("auth/register", userData);
-      res && notifySuccess("Successfully Registered");
+        try {const res = await userRequest.post("auth/register", userData);
+      res && notifySuccess("Successfully Registered");} catch (err) {
+        notifyFailure("Username and Email should be Unique");
+      }
       }else{
         notifyInfo("Fill All Details");
       }
-    } catch (err) {
-      notifyFailure(err);
-    }
+    
   };
 
   return (
