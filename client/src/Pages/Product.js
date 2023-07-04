@@ -201,7 +201,7 @@ const Product = () => {
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
   const Product = useSelector((state) => state.product.products);
-  console.log(Product);
+ // console.log(Product);
   // const Product=useSelector((state)=>state.product)
 
   useEffect(() => {
@@ -212,7 +212,7 @@ const Product = () => {
         );
         setProduct(res.data);
         dispatch(addCurProduct(res.data));
-        console.log(res.data);
+       // console.log(res.data);
       } catch (err) {
         console.log("ERROR");
       }
@@ -235,7 +235,7 @@ const Product = () => {
       const res = await userRequest.put("/products/find/" + id, review);
       dispatch(updateReview(res.data.reviews));
       setAllReviews(res.data.reviews);
-      console.log(res);
+      //console.log(res);
       // }
       setPost("");
     } catch (err) {

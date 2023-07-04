@@ -10,7 +10,7 @@ const router = require("express").Router();
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newProduct = new Product(req.body);
-  console.log(req.body);
+ // console.log(req.body);
 
   try {
     const savedProduct = await newProduct.save();
@@ -61,7 +61,7 @@ router.get("/find/:id", async (req, res) => {
 });
 
 router.put("/find/:id", verifyToken, async (req, res) => {
-  console.log(req.body);
+ // console.log(req.body);
   const id = req.params.id;
   try {
     const product = await Product.findByIdAndUpdate(

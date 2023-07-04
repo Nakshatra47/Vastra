@@ -195,10 +195,10 @@ const AddressButton = styled.button`
 
 const Cart = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
+ // console.log(currentUser);
 
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  //console.log(cart);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [deliver, setDeliver] = useState({});
 
@@ -210,7 +210,7 @@ const Cart = () => {
     dispatch(emptyCart());
   };
 
-  console.log(process.env.REACT_APP_RAZORPAY_KEY_ID);
+ // console.log(process.env.REACT_APP_RAZORPAY_KEY_ID);
 
   const initPayment = (data) => {
     const options = {
@@ -221,7 +221,7 @@ const Cart = () => {
       handler: async (response) => {
         try {
           const res = await userRequest.post("/checkout/verify", response);
-          console.log(res);
+         // console.log(res);
           navigate("/success", {
             state: {
               razorData: res.data,
@@ -252,7 +252,7 @@ const Cart = () => {
   const addressHandleClick = async () => {
     try {
       const res = await userRequest.put(`users/${currentUser._id}`, deliver);
-      console.log(res);
+     // console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -267,7 +267,7 @@ const Cart = () => {
         currency: "USD",
       });
 
-      console.log(res.data);
+     // console.log(res.data);
       setOrderId(res.data.id);
 
       initPayment(res.data);
@@ -275,7 +275,7 @@ const Cart = () => {
       console.log(err);
     }
   };
-  console.log(orderId);
+ // console.log(orderId);
   const addHandler = (data) => {
     dispatch(itemAddHandler(data));
   };

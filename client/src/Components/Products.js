@@ -28,14 +28,14 @@ const Products = ({ cat, filters, sort, type }) => {
             : "http://localhost:5000/api/products"
         );
         setProducts(res.data);
-        console.log(res);
+       // console.log(res);
       } catch (err) {
         console.log(err);
       }
     };
     getProducts();
   }, [cat]);
-  console.log(products);
+ // console.log(products);
 
   useEffect(() => {
     cat &&
@@ -50,7 +50,7 @@ const Products = ({ cat, filters, sort, type }) => {
 
   // let res=filteredProduct.sort((a,b)=>a.price-b.price)
   // console.log(res);
-  console.log(type);
+ // console.log(type);
   useEffect(() => {
     if (products && type) {
       setFilteredProducts(
@@ -78,7 +78,7 @@ const Products = ({ cat, filters, sort, type }) => {
     }
   }, [sort]);
 
-  console.log(filteredProduct);
+ // console.log(filteredProduct);
   return (
     <Container>
       {filteredProduct && filteredProduct.length > 0

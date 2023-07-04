@@ -9,12 +9,12 @@ const cartSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      console.log(action.payload);
+     // console.log(action.payload);
 
       const ind = state.products.findIndex(
         (item) => item._id === action.payload._id
       );
-      console.log(ind);
+    //  console.log(ind);
       if (ind > -1) {
         state.products[ind].quantity++;
         const price = state.products[ind].price;
@@ -43,7 +43,7 @@ const cartSlice = createSlice({
       let curPrice = state.products[ind].price;
       state.total += curPrice;
 
-      console.log(ind);
+     // console.log(ind);
     },
     dummy:(state)=>{
       state.total=0;

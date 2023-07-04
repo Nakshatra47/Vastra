@@ -24,6 +24,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Order from "./pages/order/order";
+import { notifyFailure } from "./alert/alert";
 function App() {
   const history = useHistory();
   const loginUser = useSelector((state) => state.user.currentUser);
@@ -84,7 +85,8 @@ function App() {
           </div>
         </>
       ) : (
-        <Redirect path="/login"></Redirect>
+        //notifyFailure("You are not admin"), 
+        <Redirect  to="/login"></Redirect>
       )}
     </Switch>
   </Router>

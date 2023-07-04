@@ -51,7 +51,7 @@ function ProductList() {
       [event.target.name]: value,
     });
 
-    console.log(filters);
+   // console.log(filters);
   };
 
  

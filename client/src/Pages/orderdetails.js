@@ -167,14 +167,14 @@ const OrderDetails = () => {
   const dispatch = useDispatch();
   const order = useSelector((state) => state.order);
   const orderStatus = { status: "Canceled" };
-  console.log(order);
+ // console.log(order);
 
   useEffect(() => {
     const getOrder = async () => {
       try {
         const res = await userRequest.get(`/orders/find/${id}`);
 
-        console.log(res.data);
+        //console.log(res.data);
 
         order.orders.length !== 0 && dispatch(setStatus(res.data.status));
       } catch (err) {
@@ -184,14 +184,14 @@ const OrderDetails = () => {
     getOrder();
   }, [currentUser, dispatch, order, id]);
 
-  console.log(order.orders);
+ // console.log(order.orders);
 
   const handleOrderStatus = async () => {
     try {
       const res = await userRequest.put(`orders/${id}`, orderStatus);
       dispatch(cancelOrder());
       notifyInfo("Order Canceled!!");
-      console.log(res);
+     // console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -201,7 +201,7 @@ const OrderDetails = () => {
     return <StatusButton type={type}>{type}</StatusButton>;
   
   };
-  console.log(order);
+ // console.log(order);
   return (
    
     <Container>

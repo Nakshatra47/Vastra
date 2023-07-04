@@ -77,16 +77,16 @@ const Success = () => {
   const location = useLocation();
 
   const [orderedItems, setOrderItems] = useState([]);
-  console.log(orderedItems);
+ // console.log(orderedItems);
   const currentUser = useSelector((state) => state.user.currentUser);
   const order = useSelector((state) => state.order.orders);
 
   const orderId = location.state.orderId;
-  console.log(orderId);
+ // console.log(orderId);
 
   const data = location.state.razorData;
   const cart = location.state.products;
-  console.log(cart);
+ // console.log(cart);
   const address = location.state.address;
   const number = location.state.number;
   const dispatch = useDispatch();
@@ -117,7 +117,7 @@ const Success = () => {
           })),
           amount: cart.total,
         });
-        console.log(main);
+        //console.log(main);
       } catch (err) {
         console.log(err);
       }
@@ -125,7 +125,7 @@ const Success = () => {
     data && createOrder();
   }, [cart, data, currentUser, address, number, dispatch]);
 
-  console.log(order);
+ // console.log(order);
 
   return (
     <Container>

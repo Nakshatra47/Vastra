@@ -22,8 +22,8 @@ router.post("/", verifyToken, async (req, res) => {
 //Update
 
 router.put("/:id", verifyToken, async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.user);
+ // console.log(req.params.id);
+ // console.log(req.user);
 
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
@@ -65,7 +65,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 //Get Product
 
 router.get("/find/:userId", verifyToken, async (req, res) => {
-  console.log(req.params.userId);
+ // console.log(req.params.userId);
   try {
     const orders = await Order.findById(req.params.userId);
     res.status(200).json(orders);

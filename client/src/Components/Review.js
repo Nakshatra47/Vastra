@@ -86,7 +86,7 @@ const Main = styled.div`
 
 const Review = () => {
   const product = useSelector((state) => state.product.products);
-  console.log(product);
+ // console.log(product);
   // console.log(data.reviews.map((item)=>console.log(item)));
   //   console.log(data.reviews);
   // const
@@ -96,6 +96,8 @@ const Review = () => {
         <Main>
           {product.reviews.map((review, ind) => {
             return (
+             // console.log(review),
+            
               <Wrapper key={ind}>
                 <Top>
                   <Left>

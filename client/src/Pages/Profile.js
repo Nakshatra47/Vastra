@@ -130,7 +130,7 @@ const Profile = () => {
   const User = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(User);
+ // console.log(User);
 
   const profileHandler = (e) => {
     e.preventDefault();
@@ -172,14 +172,14 @@ const Profile = () => {
       }
     );
   };
-  console.log(image);
+  //console.log(image);
   useEffect(() => {
     const updatedProfile = async () => {
       try {
         if (image) {
           const res = await userRequest.put(`users/${User._id}`, image);
 
-          console.log(res.data);
+         // console.log(res.data);
 
           setProfile(res.data.img);
         }
@@ -191,7 +191,7 @@ const Profile = () => {
   }, [image, User && User._id, dispatch]);
 
   const passwordHandler = async () => {
-    console.log(password);
+    //console.log(password);
     try {
       const res = await userRequest.put(`users/${User._id}`, password);
       res && notifySuccess("Sucessfully Updated");

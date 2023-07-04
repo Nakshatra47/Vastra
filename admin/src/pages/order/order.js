@@ -99,7 +99,7 @@ const Order = () => {
                     setOrderStatus({ status: event.target.value });
                   }}
                 >
-                  <option value="defaull" disabled selected>
+                  <option value="default" disabled selected>
                     Process
                   </option>
                   <option className="process" value="Shipping">

@@ -9,7 +9,7 @@ const WidgetSm = () => {
     const getUsers = async () => {
       try {
         const res = await userRequest.get("users/?new=true");
-        setUsers(res.data);
+        setUsers(res.data); 
       } catch (err) {}
     };
     getUsers();
@@ -38,7 +38,7 @@ const WidgetSm = () => {
             <button className="widgetSmButton">
               <Visibility className="widgetSmIcon" />
               Display
-            </button>
+            </button> 
           </li>
         ))}
       </ul>

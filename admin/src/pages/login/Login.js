@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../redux/apiCalls";
 import { loginSuccess } from "../../redux/userRedux";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 const Login = () => {
   const user = useSelector((state) => state.user.currentUser);
   const [username, setUsername] = useState("");
@@ -31,6 +32,7 @@ const Login = () => {
   // }, [Navigate, history]);
 
   return (
+    
     <div className="container">
       <div className="Wrapper">
         <form>
@@ -65,8 +67,11 @@ const Login = () => {
           </div>
         )}
       </div>
+      <ToastContainer/>
     </div>
+    
   );
+  
 };
 
 export default Login;

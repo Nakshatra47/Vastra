@@ -33,8 +33,14 @@ export const login = async (dispatch, user) => {
     const res = await publicRequest.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
     console.log(res.data);
+    if(!res.data.isAdmin){
+      notifyFailure("You are not ADMIN!!");
+    }else{
+      notifySuccess("Login Successful");
+    }
   } catch (err) {
     dispatch(loginFailure());
+    notifyFailure("Invalid Credentials"); 
   }
 };
 
