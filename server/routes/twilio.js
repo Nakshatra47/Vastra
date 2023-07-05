@@ -2,10 +2,10 @@ const router = require("express").Router();
 const { verifyTokenAndAdmin } = require("./verifyToken");
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   let msg = "";
   const number = "+91" + req.body.number;
-  console.log(number);
+ // console.log(number);
   if (req.body.orderStatus === "Shipping") {
     msg = "YOUR ORDER IS SUCCESSFULLY SHIPPED  🚚";
   } else {

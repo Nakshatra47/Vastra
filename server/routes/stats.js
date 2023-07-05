@@ -7,7 +7,7 @@ const {
 const router = require("express").Router();
 
 router.post("/", verifyToken, async (req, res) => {
-  console.log(req.body);
+ // console.log(req.body);
   const newProduct = new Stats(req.body);
 
   try {
@@ -23,11 +23,11 @@ router.get("/:id", verifyToken, async (req, res) => {
 
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-  console.log(productId);
-  console.log(lastMonth);
+ // console.log(productId);
+ // console.log(lastMonth);
 
   const previousMonth = new Date(date.setMonth(lastMonth.getMonth() - 1));
-  console.log(previousMonth);
+ // console.log(previousMonth);
 
   try {
     const stats = await Stats.aggregate([
