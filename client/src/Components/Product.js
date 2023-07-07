@@ -34,6 +34,7 @@ const Container = styled.div`
 
   &:hover ${Info} {
     opacity: 1;
+    transform: scale(1.05);
   }
 `;
 const Circle = styled.div`
@@ -57,10 +58,10 @@ const Icon = styled.div`
   justify-content: center;
   background-color: white;
   margin: 10px;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
   &:hover {
     background-color: #e9f5f5;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 `;
 function Product(props) {
@@ -82,5 +83,5 @@ function Product(props) {
     </Container>
   );
 }
-
+ 
 export default Product;

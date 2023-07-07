@@ -9,13 +9,21 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import OrderDetails from "./Pages/orderdetails";
 import Profile from "./Pages/Profile";
-
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setCart } from "./redux/cartRedux";
 function App() {
   
   const user = useSelector((state) => state.user.currentUser);
   
+  const dispatch=useDispatch();
+  
+  useEffect(() => {
+    console.log("xx");
+    user && dispatch(setCart(user));
+  }, []);
 
-  return (
+  return ( 
     <Routes>
       {/* <Route path="/test" element={<Login />} /> */}
       <Route path="/" element={<Home />} />

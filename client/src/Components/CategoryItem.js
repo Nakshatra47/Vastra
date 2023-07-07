@@ -8,6 +8,12 @@ const Container = styled.div`
   margin: 3px;
   height: 70vh;
   position: relative;
+  transition: all 0.2s ease-in;
+  &:hover {
+   
+    border-radius:12px;
+    transform: scale(1.04);
+  }
 `;
 const Image = styled.img`
   height: 100%;
@@ -41,6 +47,12 @@ const Button = styled.button`
   color: gray;
   background-color: white;
   cursor: pointer;
+  transition: all 0.2s ease-in;
+  &:hover {
+    color:black;
+    border-radius:8px;
+    box-shadow: 2px 2px black;
+  }
 `;
 const CategoryItem = ({item}) => {
   return (

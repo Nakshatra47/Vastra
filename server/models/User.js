@@ -12,6 +12,8 @@ const UserSchema = mongoose.Schema(
     img :{type:String},
     number:{type:Number},
     address:{type:String},
+    products: { type: Array },
+    total: { type: Number },
     isActive:{type:String}
   },
   { timestamps: true }

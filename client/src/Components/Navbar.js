@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import Badge from "@mui/material/Badge";
+import { userRequest } from "../requestMethod";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { mobile } from "../Responsive";
 import { useSelector } from "react-redux";
@@ -81,13 +82,26 @@ const MenuItem = styled.div`
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [image, setImage] = useState({});
+  const [cart, setCart] = useState({});
+  
   // console.log(user);
   const user = useSelector((state) => state.user);
   // console.log(user);
   const quantity = useSelector((state) => state.cart.quantity);
-  
-  const handleClick = () => {
+  const products = useSelector((state) => state.cart.products);
+  const total = useSelector((state) => state.cart.total);
+  console.log(products);
+  console.log(total);
+  console.log(quantity);
+  const handleClick = async () => {
+    try {
+      setCart({products: products,total: total});
+      const res = await userRequest.put(`users/${user.currentUser._id}`, cart);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+    
     dispatch(logoutUser());
     navigate("/login");
   };
@@ -114,8 +128,8 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            console.log(user.currentUser),
-            console.log(user),
+           // console.log(user.currentUser),
+           // console.log(user),
             <>
             
               <MenuItem onClick={handleClick}>LOGOUT</MenuItem>

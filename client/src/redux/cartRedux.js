@@ -34,6 +34,13 @@ const cartSlice = createSlice({
       state.total = 0;
       state.quantity = 0;
     },
+    setCart:(state,action)=>{
+      const x=action.payload.products?action.payload.products:[];
+      state.products=action.payload.products?action.payload.products:[];
+      state.total=action.payload.total?action.payload.total:0;
+      state.quantity=x.length;
+     // console.log(state.currentUser);
+    },
     itemAddHandler: (state, action) => {
       //  console.log(action.payload);
       const ind = state.products.findIndex((item) => {
@@ -68,7 +75,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, emptyCart, itemAddHandler, itemRemoveHandler,dummy } =
+export const { addProduct, emptyCart, itemAddHandler, itemRemoveHandler,dummy,setCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
