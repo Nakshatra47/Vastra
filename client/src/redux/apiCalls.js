@@ -5,13 +5,13 @@ export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
     const res = await publicRequest.post(
-      "http://localhost:5000/api/auth/login",
-      user
+      "https://vastra-backend.onrender.com/api/auth/login",
+      user 
     );
     dispatch(loginSuccess(res.data));
    // console.log(res); 
    
-   // console.log(res.data);
+   //console.log(res.data);
   } catch (err) {
     console.log(err);
     dispatch(loginFailure());

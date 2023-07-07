@@ -198,7 +198,7 @@ const Cart = () => {
  // console.log(currentUser);
 
   const cart = useSelector((state) => state.cart);
-  //console.log(cart);
+  console.log(cart);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [deliver, setDeliver] = useState({});
 
@@ -374,6 +374,7 @@ const Cart = () => {
                   type="text"
                   placeholder="Address"
                   autoComplete="off"
+                  defaultValue={currentUser.address}
                 ></Input>
                 <Input
                   onChange={changeHandler}
@@ -381,6 +382,7 @@ const Cart = () => {
                   type="tel"
                   placeholder="Mobile Number"
                   autoComplete="off"
+                  defaultValue={currentUser.number}
                 ></Input>
                 <AddressButton onClick={addressHandleClick}>
                   DELIVER HERE

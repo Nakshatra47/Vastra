@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userRedux";
+import { useState,useEffect } from "react";
 const Container = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })}
@@ -80,12 +81,12 @@ const MenuItem = styled.div`
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [image, setImage] = useState({});
   // console.log(user);
   const user = useSelector((state) => state.user);
   // console.log(user);
   const quantity = useSelector((state) => state.cart.quantity);
-
+  
   const handleClick = () => {
     dispatch(logoutUser());
     navigate("/login");
@@ -113,7 +114,10 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
+            console.log(user.currentUser),
+            console.log(user),
             <>
+            
               <MenuItem onClick={handleClick}>LOGOUT</MenuItem>
               <Link to="/cart">
                 <MenuItem>

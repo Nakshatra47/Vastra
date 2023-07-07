@@ -11,7 +11,9 @@ import OrderDetails from "./Pages/orderdetails";
 import Profile from "./Pages/Profile";
 
 function App() {
+  
   const user = useSelector((state) => state.user.currentUser);
+  
 
   return (
     <Routes>

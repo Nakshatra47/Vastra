@@ -8,6 +8,7 @@ const { verifyTokenAndAdmin } = require("./verifyToken");
 
 const { verifyTokenAndAuthorisation } = require("./verifyToken");
 router.put("/:id", verifyToken, async (req, res) => {
+  console.log(req.body)
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
       req.body.password,

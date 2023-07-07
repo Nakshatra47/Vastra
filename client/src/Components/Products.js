@@ -24,8 +24,8 @@ const Products = ({ cat, filters, sort, type }) => {
       try {
         const res = await publicRequest.get(
           cat
-            ? `http://localhost:5000/api/products?category=${cat}`
-            : "http://localhost:5000/api/products"
+            ? `https://vastra-backend.onrender.com/api/products?category=${cat}`
+            : "https://vastra-backend.onrender.com/api/products"
         );
         setProducts(res.data);
        // console.log(res);

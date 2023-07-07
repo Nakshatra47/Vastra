@@ -5,7 +5,7 @@ import { mobile } from "../Responsive";
 import { userRequest } from "../requestMethod";
 import app from "../firebase.js";
 import { useSelector } from "react-redux";
-//import { setNavImage } from "../redux/userRedux";
+import { setNavImage } from "../redux/userRedux";
 import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../redux/userRedux";
@@ -128,6 +128,7 @@ const Profile = () => {
 
 
   const User = useSelector((state) => state.user.currentUser);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
  // console.log(User);
@@ -165,6 +166,8 @@ const Profile = () => {
           });
           if (downloadURL) {
             notifySuccess("Successfully Uploaded");
+          //  console.log("yy");
+            
           } else {
             notifyFailure("Upload Failed!!");
           }
@@ -179,9 +182,10 @@ const Profile = () => {
         if (image) {
           const res = await userRequest.put(`users/${User._id}`, image);
 
-         // console.log(res.data);
-
-          setProfile(res.data.img);
+         // console.log("xx");
+         
+          dispatch(setNavImage(res.data.img));
+          setProfile(res.data.img); 
         }
       } catch (err) {
         console.log(err);

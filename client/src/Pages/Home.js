@@ -8,11 +8,15 @@ import Newsletter from "../Components/Newsletter";
 import Footer from "../Components/Footer";
 import { useDispatch,useSelector } from "react-redux";
 import { setNavImage } from "../redux/userRedux";
-
+import { useEffect } from "react";
 const Home = () => {
   const dispatch=useDispatch();
-  const User = useSelector((state) => state.user.currentUser);
-  User && dispatch(setNavImage(User.img));
+  const user = useSelector((state) => state.user);
+  const User=user.currentUser;
+
+  useEffect(() => {
+   User && dispatch(setNavImage(user.navImage));
+  }, [User]);
 
   return (
     <div>

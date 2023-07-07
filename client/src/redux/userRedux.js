@@ -18,8 +18,6 @@ const userSlice = createSlice({
         loginSuccess:(state,action)=>{
             state.isFetching=false;
             state.currentUser=action.payload;
-           
-
         },
         loginFailure:(state)=>{
             state.isFetching=false;
@@ -30,11 +28,11 @@ const userSlice = createSlice({
         },
         setNavImage:(state,action)=>{
             state.navImage=action.payload
-
+           // console.log(state.currentUser);
         }
 
     },
-  });
+  }); 
 
 export const {loginStart,loginFailure,loginSuccess,logoutUser,setNavImage}=userSlice.actions;
 export default userSlice.reducer;

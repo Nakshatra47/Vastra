@@ -208,7 +208,7 @@ const Product = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/products/find/" + id
+          "https://vastra-backend.onrender.com/api/products/find/" + id
         );
         setProduct(res.data);
         dispatch(addCurProduct(res.data));
