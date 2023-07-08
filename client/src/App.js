@@ -10,18 +10,44 @@ import { useSelector } from "react-redux";
 import OrderDetails from "./Pages/orderdetails";
 import Profile from "./Pages/Profile";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import { userRequest } from "./requestMethod";
 import { setCart } from "./redux/cartRedux";
 function App() {
-  
-  const user = useSelector((state) => state.user.currentUser);
-  
+  const user = useSelector((state) => state.user);
+  const User = useSelector((state) => state.user.currentUser);
+  const [cart, setCart] = useState({});
   const dispatch=useDispatch();
   
   useEffect(() => {
-    console.log("xx");
-    user && dispatch(setCart(user));
-  }, []);
+     
+    const getData = async () => {
+      try {
+        setCart({products: [],total: 0});
+        const res = await userRequest.get(`carts/find/${User._id}`);
+        console.log(res.data);
+        if(res.data!=null) {
+          setCart({products: res.data.products,total: res.data.total});
+          dispatch(setCart(cart));
+        }else{
+          try {
+            
+            const res = await userRequest.put(`carts/`, {userId: User.id,cart});
+            console.log("res");
+          } catch (err) {
+            console.log(err);
+          }
+        }
+        
+      } catch (err) {
+        console.log(err);
+        
+      }
+    };
+    getData();
+    
+  }, [User]);
+
 
   return ( 
     <Routes>
@@ -32,7 +58,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       {/* <Route path="/login" element={<Login />} /> */}
 
-      <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+      <Route path="/login" element={User ? <Navigate to="/" /> : <Login />} />
 
       <Route path="/success" element={<Success />} />
       <Route path="/register" element={<Register />} />
