@@ -5,13 +5,13 @@ const CartSchema = mongoose.Schema(
     userId: { type: String, required: true },
     products: [
       {
-        title: { type: String, required: true, unique: true },
-       desc: { type: String, required: true },
-       img: { type: String, required: true, unique: true },
+        title: { type: String,  unique: true },
+       desc: { type: String,  },
+       img: { type: String, unique: true },
         categories: { type: Array },
        size: { type: Array },
        color: { type: Array },
-       price: { type: Number, required: true },
+       price: { type: Number, },
        inStock: { type: Boolean, default: true },
        reviews: { type: Array },
        likes: { type: Number },
