@@ -1,4 +1,4 @@
-import { loginStart, loginSuccess, loginFailure } from "./userRedux";
+import { loginStart, loginSuccess, loginFailure,setNavImage } from "./userRedux";
 import { publicRequest } from "../requestMethod";
 import {  notifyFailure } from "../Components/alert";
 export const login = async (dispatch, user) => {
@@ -9,6 +9,7 @@ export const login = async (dispatch, user) => {
       user 
     );
     dispatch(loginSuccess(res.data));
+    dispatch(setNavImage(res.data.img));
    // console.log(res); 
    
    //console.log(res.data);

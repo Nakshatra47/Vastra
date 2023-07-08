@@ -88,19 +88,40 @@ const Navbar = () => {
   const user = useSelector((state) => state.user);
   // console.log(user);
   const quantity = useSelector((state) => state.cart.quantity);
-  const products = useSelector((state) => state.cart.products);
-  const total = useSelector((state) => state.cart.total);
-  console.log(products);
-  console.log(total);
-  console.log(quantity);
-  const handleClick = async () => {
-    try {
-      setCart({products: products,total: total});
-      const res = await userRequest.put(`users/${user.currentUser._id}`, cart);
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+  const productss = useSelector((state) => state.cart.products);
+  const tot = useSelector((state) => state.cart.total);
+  
+  useEffect(() => {
+    // console.log(productss);
+    // console.log(tot);
+     setCart({ products: productss, total: tot }); 
+    //console.log(cart);
+    
+   
+  }, [productss,tot,quantity]);
+  useEffect(() => {
+    let isMounted = true;
+    const doSomething = async() =>{
+      // code here...
+      try {
+        const res = await userRequest.put(`carts/${user.currentUser._id}`, cart);
+       //console.log(res.data);
+     } catch (err) {
+       console.log(err);
+     }
     }
+    setTimeout(() => {
+      if (cart && isMounted) {
+      //  console.log(cart);
+        doSomething();
+      }
+    }, 500);
+    return () => {
+      isMounted = false; // Cleanup: Cancel pending getData calls
+    };
+  }, [cart]);
+  const handleClick = async () => {
+   
     
     dispatch(logoutUser());
     navigate("/login");

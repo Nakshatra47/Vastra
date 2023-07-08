@@ -254,7 +254,7 @@ const Profile = () => {
                 onChange={(e) => setFile(e.target.files[0])}
                 ref={fileButton}
               />
-              <Button onClick={profileHandler}>Update Profile</Button>
+              <Button onClick={profileHandler} disabled={!file}>Update Profile</Button>
             </ButtonDiv>
           </TopDiv>
         </Left>

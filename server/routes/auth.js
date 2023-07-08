@@ -74,3 +74,4 @@ router.post("/logout", verifyTokenAndAuthorisation, (req, res) => {
   
 });
 module.exports = router;
+  

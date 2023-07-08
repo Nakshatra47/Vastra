@@ -13,41 +13,64 @@ import { useDispatch } from "react-redux";
 import { useEffect,useState } from "react";
 import { userRequest } from "./requestMethod";
 import { setCart } from "./redux/cartRedux";
+import { setNavImage } from "./redux/userRedux";
 function App() {
   const user = useSelector((state) => state.user);
   const User = useSelector((state) => state.user.currentUser);
-  const [cart, setCart] = useState({});
+  const [cart, setCarti] = useState({});
   const dispatch=useDispatch();
-  
-  useEffect(() => {
-     
-    const getData = async () => {
-      try {
-        setCart({products: [],total: 0});
-        const res = await userRequest.get(`carts/find/${User._id}`);
-        console.log(res.data);
-        if(res.data!=null) {
-          setCart({products: res.data.products,total: res.data.total});
-          dispatch(setCart(cart));
-        }else{
-          try {
-            
-            const res = await userRequest.put(`carts/`, {userId: User.id,cart});
-            console.log("res");
-          } catch (err) {
-            console.log(err);
+
+ //console.log(user.currentUser);
+ 
+ useEffect(() => {
+  let isMounted = true; // Flag to track component mount status
+
+  const getData = async () => {
+    try {
+      const res = await userRequest.get(`carts/find/${User._id}`);
+      // console.log(res);
+      if (res.data != null) {
+        const fetchedCart = { products: res.data.products, total: res.data.total };
+        console.log(fetchedCart);
+        if (isMounted) {
+          setCarti(fetchedCart);
+          if (fetchedCart.products.length !== 0) {
+            dispatch(setCart(fetchedCart));
           }
         }
-        
-      } catch (err) {
-        console.log(err);
-        
+      } else {
+        try {
+          const res = await userRequest.post(`carts/add`, {
+            userId: User._id,
+            products: [],
+            total: 0
+          });
+          console.log(res);
+        } catch (err) {
+          console.log(err);
+        }
       }
-    };
-    getData();
-    
-  }, [User]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+  if (User && isMounted) {
+      getData();
+    
+  } else {
+    setCart({ products: [], total: 0 });
+  }
+
+  return () => {
+    isMounted = false; // Cleanup: Cancel pending getData calls
+  };
+}, [User, dispatch]);
+
+
+
+
+  
 
   return ( 
     <Routes>

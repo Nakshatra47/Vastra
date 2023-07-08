@@ -144,7 +144,8 @@ const Login = () => {
           </ButtonDiv>
           <Div>
 
-          {error && <Error>{error}</Error>}
+          {error && <Error>{error.message}</Error>}
+
          
           <Link href="/register">CREATE A NEW ACCOUNT</Link>
           </Div>

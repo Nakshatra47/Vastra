@@ -6,7 +6,7 @@ const {
   verifyTokenAndAdmin,
   verifyTokenAndAuthorisation,
 } = require("./verifyToken");
-router.post("/", verifyToken, async (req, res) => {
+router.post("/add", verifyToken, async (req, res) => {
   const newCart = new Cart(req.body);
 
   try {
@@ -14,23 +14,21 @@ router.post("/", verifyToken, async (req, res) => {
     res.status(200).json(savedCart);
   } catch (err) {
     res.status(500).json(res);
-  }
+  } 
 });
 
 router.put("/:id", verifyTokenAndAuthorisation, async (req, res) => {
   try {
-    const updatedCart = await Cart.findByIdAndUpdate(
-      req.params.id,
+    const updatedCart = await Cart.updateOne({ userId: req.params.id },
       {
         $set: req.body,
       },
       { new: true }
     );
-    res.status(200).json(updatedProduct);
+    res.status(200).json(updatedCart);
   } catch (err) {
-    //refer here
-    // return res.status(500).json(err);
-    // console.log(err);
+    console.log(err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -46,7 +44,7 @@ router.delete("/:id", verifyTokenAndAuthorisation, async (req, res) => {
 
 router.get("/find/:id", verifyTokenAndAuthorisation, async (req, res) => {
   try {
-    const cart = await Cart.findOne({ userId: req.params.userId });
+    const cart = await Cart.findOne({ userId: req.params.id });
     res.status(200).json(cart);
   } catch (err) {
     res.status(500).json(err);
@@ -63,4 +61,4 @@ router.post("/admin", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router; 

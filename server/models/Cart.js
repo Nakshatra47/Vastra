@@ -6,19 +6,19 @@ const CartSchema = mongoose.Schema(
     products: [
       {
         title: { type: String,  unique: true },
-       desc: { type: String,  },
+       desc: { type: String }, 
        img: { type: String, unique: true },
         categories: { type: Array },
        size: { type: Array },
        color: { type: Array },
-       price: { type: Number, },
-       inStock: { type: Boolean, default: true },
+       price: { type: Number },
+       inStock: { type: Boolean },
        reviews: { type: Array },
        likes: { type: Number },
         quantity: {
-          type: Number,
-          default: 1,
-        },
+          type: Number,   
+          
+        }
       },
     ],
     total: { type: Number },

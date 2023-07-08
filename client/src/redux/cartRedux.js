@@ -62,7 +62,11 @@ const cartSlice = createSlice({
         return item._id === action.payload;
       });
       let quantity = state.products[ind].quantity;
-      if (quantity === 0) {
+      if (quantity === 1) {
+        state.products[ind].quantity--;
+        let curPrice = state.products[ind].price;
+
+        state.total -= curPrice;
         state.products.splice(ind, 1);
         state.quantity--;
       } else {
