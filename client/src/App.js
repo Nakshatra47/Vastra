@@ -28,7 +28,7 @@ function App() {
   const getData = async () => {
     try {
       const res = await userRequest.get(`carts/find/${User._id}`);
-      // console.log(res);
+       console.log(res);
       if (res.data != null) {
         const fetchedCart = { products: res.data.products, total: res.data.total };
         console.log(fetchedCart);
@@ -40,6 +40,7 @@ function App() {
         }
       } else {
         try {
+          dispatch(setCart({ products: [], total: 0 }));
           const res = await userRequest.post(`carts/add`, {
             userId: User._id,
             products: [],
@@ -56,10 +57,11 @@ function App() {
   };
 
   if (User && isMounted) {
+    setTimeout(() => {
       getData();
-    
+    }, 500);
   } else {
-    setCart({ products: [], total: 0 });
+    dispatch(setCart({ products: [], total: 0 }));
   }
 
   return () => {

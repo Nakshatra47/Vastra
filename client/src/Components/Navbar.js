@@ -112,7 +112,7 @@ const Navbar = () => {
     }
     setTimeout(() => {
       if (cart && isMounted) {
-      //  console.log(cart);
+        console.log(cart);
         doSomething();
       }
     }, 500);
@@ -122,7 +122,7 @@ const Navbar = () => {
   }, [cart]);
   const handleClick = async () => {
    
-    
+    setCart({ products: [], total: 0 });
     dispatch(logoutUser());
     navigate("/login");
   };

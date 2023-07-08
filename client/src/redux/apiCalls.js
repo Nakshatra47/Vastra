@@ -1,5 +1,6 @@
 import { loginStart, loginSuccess, loginFailure,setNavImage } from "./userRedux";
 import { publicRequest } from "../requestMethod";
+import { setCart } from "./cartRedux";
 import {  notifyFailure } from "../Components/alert";
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
