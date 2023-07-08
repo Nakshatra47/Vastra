@@ -54,7 +54,7 @@ router.get("/find/:id", verifyTokenAndAuthorisation, async (req, res) => {
 });
 //Get All
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/admin", verifyTokenAndAdmin, async (req, res) => {
   try {
     const carts = await Cart.find();
     res.status(200).json(carts);
