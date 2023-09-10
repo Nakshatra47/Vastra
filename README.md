@@ -14,11 +14,11 @@ git clone https://github.com/Nakshatra47/Vastra.git
 cd Vastra
 npm install
 ```
-##Usage
+## Usage
 ```bash
 npm start
 ```
-##Tech Stack
+## Tech Stack
 Client: React, Redux
 
 Server: Node, Express
